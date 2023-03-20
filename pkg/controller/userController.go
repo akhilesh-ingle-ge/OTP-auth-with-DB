@@ -105,11 +105,9 @@ func Verify(ctx *gin.Context) {
 	user_otp := detail.Otp
 	if user_otp == otp {
 		token := middleware.GenerateToken(Id)
-		id := ctx.GetInt("id")
 		ctx.JSON(http.StatusOK, gin.H{
 			"message": "SignedIn successfully",
 			"token":   token,
-			"id":      id,
 		})
 	} else {
 		ctx.JSON(http.StatusBadRequest, gin.H{
